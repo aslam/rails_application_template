@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 gem_group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'capybara'
-  gem 'webdrivers'
-  gem 'faker'
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "capybara"
+  gem "webdrivers"
+  gem "faker"
 end
 
 initializer 'generators.rb', <<-CODE
@@ -19,3 +19,9 @@ initializer 'generators.rb', <<-CODE
       controller_specs: false
   end
 CODE
+
+after_bundle do
+  git :init
+  git add: "."
+  git commit: %Q{ -m 'Initial commit' }
+end
